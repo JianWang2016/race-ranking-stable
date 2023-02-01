@@ -1,7 +1,5 @@
-import React from "react";
-
-function test() {
+function Test() {
   return <div className="text-green-600">testing for tailwindcss</div>;
 }
 
-export default test;
+export default Test;

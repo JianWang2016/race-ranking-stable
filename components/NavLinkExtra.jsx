@@ -2,12 +2,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-export function NavLinks() {
+export function NavLinkExtra() {
   let [hoveredIndex, setHoveredIndex] = useState(null);
 
   return [
-    ["Male runners", "/male"],
-    ["Female runners", "/female"],
+    ["FAQs", "/faqs"],
+    ["Contact", "/contact"],
   ].map(([label, href], index) => (
     <Link
       key={label}

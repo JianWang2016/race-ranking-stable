@@ -5,7 +5,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { TextField } from "@/components/Fields";
 import { Logomark } from "@/components/Logo";
-import { NavLinks } from "@/components/NavLinks";
+import { NavLinkExtra } from "@/components/NavLinkExtra";
 //import qrCode from '@/images/qr-code.svg'
 
 function QrCodeBorder(props) {
@@ -29,8 +29,8 @@ export function Footer() {
             <div className="flex items-center text-gray-900">
               <Logomark className="h-10 w-10 flex-none fill-cyan-500" />
               <div className="ml-4">
-                <p className="text-base font-semibold">Pocket</p>
-                <p className="mt-1 text-sm">Invest at the perfect time.</p>
+                <p className="text-base font-semibold">Race Ranking</p>
+                <p className="mt-1 text-sm">Run a marathon at the perfect time.</p>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@ export function Footer() {
         <div className="flex flex-col items-center border-t border-gray-200 pt-8 pb-12 md:flex-row md:justify-between md:pt-6">
           <div className="flex w-full justify-center md:w-auto">
             <nav className="flex gap-8">
-              <NavLinks />
+              <NavLinkExtra />
             </nav>
           </div>
           <p className="mt-6 text-sm text-gray-500 md:mt-0">
