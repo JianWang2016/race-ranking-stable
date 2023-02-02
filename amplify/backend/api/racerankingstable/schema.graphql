@@ -1,0 +1,19 @@
+enum GenderType {
+  MALE
+  FEMALE
+}
+
+type Race @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  finishHour: Int!
+  finishMinute: Int!
+  finishSecond: Int!
+  raceName: String!
+  raceDate: AWSDate!
+  firstName: String!
+  middleName: String
+  lastName: String!
+  gender: GenderType!
+  dateOfBirth: AWSDate!
+  email: AWSEmail
+}

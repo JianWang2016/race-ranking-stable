@@ -1,0 +1,59 @@
+graphql schema
+
+enum GenderType {
+  MALE
+  FEMALE
+}
+
+type Race @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  finishHour: Int!
+  finishMinute: Int!
+  finishSecond: Int!
+  raceName: String!
+  raceDate: AWSDate!
+  firstName: String!
+  middleName: String
+  lastName: String!
+  gender: GenderType!
+  dateOfBirth: AWSDate!
+  email: AWSEmail
+}
+
+Install this only once when setting up amplify cli for the new laptop
+npm install -g @aws-amplify/cli
+
+This following step needs to be setup once for each project
+npm install aws-amplify @aws-amplify/ui-react
+
+
+amplify pull --appId d393urn68kh4o --envName staging
+I really don't like the "staging" but don't know how to fix it.
+
+
+put the following in _app.js
+
+import { ThemeProvider } from "@aws-amplify/ui-react";
+import { Amplify } from 'aws-amplify';
+
+import awsconfig from './aws-exports';
+
+import "@aws-amplify/ui-react/styles.css";
+import { studioTheme } from "./ui-components";
+
+Amplify.configure(awsconfig);
+
+wrap app as following:
+
+<ThemeProvider theme={studioTheme}>
+  <App />
+</ThemeProvider>
+
+
+
+To put this component in desired location
+import {
+ RaceCreateForm 
+} from './ui-components';
+
+<RaceCreateForm />
