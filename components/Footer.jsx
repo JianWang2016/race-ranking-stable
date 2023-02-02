@@ -6,19 +6,6 @@ import { Container } from "@/components/Container";
 import { TextField } from "@/components/Fields";
 import { Logomark } from "@/components/Logo";
 import { NavLinkExtra } from "@/components/NavLinkExtra";
-//import qrCode from '@/images/qr-code.svg'
-
-function QrCodeBorder(props) {
-  return (
-    <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M1 17V9a8 8 0 0 1 8-8h8M95 17V9a8 8 0 0 0-8-8h-8M1 79v8a8 8 0 0 0 8 8h8M95 79v8a8 8 0 0 1-8 8h-8"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export function Footer() {
   return (
@@ -29,8 +16,8 @@ export function Footer() {
             <div className="flex items-center text-gray-900">
               <Logomark className="h-10 w-10 flex-none fill-cyan-500" />
               <div className="ml-4">
-                <p className="text-base font-semibold">Race Ranking</p>
-                <p className="mt-1 text-sm">Run a marathon at the perfect time.</p>
+                <p className="text-base text-gray-600 font-semibold">Marathon Ranking</p>
+                <p className="mt-1 text-sm">It is never too late to dream big!</p>
               </div>
             </div>
           </div>
