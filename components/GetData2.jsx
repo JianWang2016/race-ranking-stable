@@ -88,7 +88,12 @@ function sortRankData(myRace) {
   });
 
   // add the rank before returning
-  return myRace.map((item, index) => ({ index, ...item }));
+  let i = 0;
+  return myRace.map((item) => {
+    item.index = i;
+    i++;
+    return item;
+  });
 }
 
 function sortRankMaleData(myRace) {
@@ -100,7 +105,12 @@ function sortRankMaleData(myRace) {
   });
 
   // add the rank before returning
-  return myRace.map((item, index) => ({ index, ...item }));
+  let i = 0;
+  return myRace.map((item) => {
+    item.index = i;
+    i++;
+    return item;
+  });
 }
 
 function sortRankFemaleData(myRace) {
@@ -112,7 +122,12 @@ function sortRankFemaleData(myRace) {
   });
 
   // add the rank before returning
-  return myRace.map((item, index) => ({ index, ...item }));
+  let i = 0;
+  return myRace.map((item) => {
+    item.index = i;
+    i++;
+    return item;
+  });
 }
 
 export function GetData() {
