@@ -5,7 +5,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { TextField } from "@/components/Fields";
 import { Logomark } from "@/components/Logo";
-import { NavLinkExtra } from "@/components/NavLinkExtra";
+import { NavLinkExtra } from "@/components/NavLinks";
 
 export function Footer() {
   return (

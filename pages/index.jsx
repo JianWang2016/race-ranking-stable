@@ -1,20 +1,24 @@
 import Head from "next/head";
 
 import { CallToAction } from "@/components/CallToAction";
+import { GetData } from "@/components/GetData2";
+import { Disclosure } from "@headlessui/react";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Pocket - Invest at the perfect time.</title>
-        <meta
-          name="description"
-          content="By leveraging insights from our network of industry insiders, you’ll know exactly when to buy to maximize profit, and exactly when to sell to avoid painful losses."
-        />
+        <title>Race Ranking.</title>
+        <meta name="description" content="Rank marathon race performance." />
       </Head>
 
       <main>
-        <CallToAction />
+        <CallToAction
+          field1="Marathon Ranking"
+          field2="Rank 2022 Marathon Best Time - All"
+        />
+
+        <GetData />
       </main>
     </>
   );

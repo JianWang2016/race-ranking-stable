@@ -1,5 +1,6 @@
 {
   "AppSyncApiName": "racerankingstable",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-02-02T16:35:16.173Z"
 }
