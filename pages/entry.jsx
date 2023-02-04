@@ -12,8 +12,8 @@ function Entry() {
     <>
     
       <CallToAction
-        field1="Share your race time with fellow runners ...."
-        field2="It only takes 90 seconds to get your bragging right for years to come"
+        field1="Share your race time"
+        field2="It only takes 90 seconds to get your bragging right"
       />
 
       <div className="container">

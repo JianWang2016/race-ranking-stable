@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { Popover } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -48,6 +49,10 @@ function MobileNavLink({ children, ...props }) {
 export function Header() {
   return (
     <header>
+      <Head>
+        <title>Marathon Race Ranking</title>
+        <meta name="description" content="Rank 2022 best marathon race time" />
+      </Head>
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">

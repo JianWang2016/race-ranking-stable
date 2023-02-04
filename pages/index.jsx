@@ -7,14 +7,9 @@ import { Disclosure } from "@headlessui/react";
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Race Ranking.</title>
-        <meta name="description" content="Rank marathon race performance." />
-      </Head>
-
       <main>
         <CallToAction
-          field1="Marathon Ranking"
+          field1=""
           field2="Rank 2022 Marathon Best Time - All"
         />
 

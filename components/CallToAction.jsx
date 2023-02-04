@@ -5,13 +5,13 @@ export function CallToAction({ field1, field2 }) {
   return (
     <section
       id="cta_id"
-      className="bg-gray-900 relative overflow-hidden py-20 sm:py-28"
+      className="relative overflow-hidden bg-gray-900 py-5 sm:py-5"
     >
       <div className="absolute top-1/2 left-20 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
-        <CircleBackground color="red" className="animate-spin-slower" />
+        <CircleBackground color="yellow" className="animate-spin-slower" />
       </div>
       <div className="absolute top-1/2 left-20 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
-        <CircleBackground color="yellow" className="animate-spin-slower" />
+        <CircleBackground color="white" className="animate-spin-slower" />
       </div>
       <div className="absolute top-1/2 left-20 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
         <CircleBackground color="blue" className="animate-spin-slower" />

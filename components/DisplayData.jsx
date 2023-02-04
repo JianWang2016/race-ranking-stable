@@ -42,12 +42,7 @@ const columns = [
 function DisplayData({ data }) {
   return (
     <>
-      <Head>
-        <title>Marathon Ranking | Home</title>
-        <meta name="keywords" content="Ranking Marathon Finishing Time - All" />
-      </Head>
       <div>
-        <h1>All Runner Finish Time Ranking</h1>
         <DataTable dense pagination columns={columns} data={data} />
       </div>
     </>
