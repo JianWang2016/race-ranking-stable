@@ -31,10 +31,10 @@ function ProcessData(myRace) {
     let m_s = item.finishMinute.toString();
     let s_s = item.finishSecond.toString();
     item["finishTime"] = h_s + ":" + m_s + ":" + s_s;
-    item["name"] =
-      item.firstName + item.middleName + item.middleName
-        ? item.middleName
-        : "" + item.lastName;
+
+    let middleName = item.middleName ? item.middleName + " " : "";
+    let runnerName = item.firstName + " " + middleName + item.lastName;
+    item["runnerName"] = runnerName;
 
     let userDob = moment(item.dateOfBirth.toString());
     let age = moment().diff(userDob, "years");
@@ -51,34 +51,6 @@ function ProcessData(myRace) {
 
   // add the rank before returning
   return myRace.map((item, index) => ({ index, ...item }));
-}
-
-function AugmentData(myRace) {
-  myRace.map((item) => {
-    let h = item.finishHour * 3600;
-    let m = item.finishMinute * 60;
-    let s = item.finishSecond;
-    item["finishTimeInSecond"] = h + m + s;
-    let h_s = item.finishHour.toString();
-    let m_s = item.finishMinute.toString();
-    let s_s = item.finishSecond.toString();
-    item["finishTime"] = h_s + ":" + m_s + ":" + s_s;
-
-    // let name = "";
-    // item.middleName
-    //   ? (name = item.firstName + " " + item.middleName + " ")
-    //   : name = item.firstName;
-    // name = name + " " + item.lastName;
-
-    item["name"] = item.firstName + " " + item.lastName;
-
-    let userDob = moment(item.dateOfBirth.toString());
-    let age = moment().diff(userDob, "years");
-    item["age"] = age;
-    //item["age"] = age.toString();
-  });
-
-  return myRace;
 }
 
 function sortRankData(myRace) {
@@ -114,7 +86,8 @@ function sortRankMaleData(myRace) {
 }
 
 function sortRankFemaleData(myRace) {
-  myRace = myRace.filter((item) => item.gender === "FEMALE");
+
+  myRace = myRace.filter((item) => item.gender === 'FEMALE');
 
   //sort based on finish time in seconds
   myRace.sort((a, b) => {
@@ -138,18 +111,6 @@ export function GetData() {
   return (
     <div className="container">
       <DisplayData data={raceData} />
-
-      <ul>
-        {raceData.map((item) => {
-          return (
-            <li key={item.id}>
-              Rank {item.index + 1} -{item.firstName} {item.fullName} -{" "}
-              {item.finishHour}:{item.finishMinute}:{item.finishSecond}-
-              {item.age}
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }
@@ -162,18 +123,6 @@ export function GetMaleData() {
   return (
     <div className="container">
       <DisplayData data={raceData} />
-
-      <ul>
-        {raceData.map((item) => {
-          return (
-            <li key={item.id}>
-              Rank {item.index + 1} -{item.firstName} {item.fullName} -{" "}
-              {item.finishHour}:{item.finishMinute}:{item.finishSecond}-
-              {item.age}
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }
@@ -181,23 +130,11 @@ export function GetMaleData() {
 export function GetFemaleData() {
   const rawData = GetRawData();
   const augData = ProcessData(rawData);
-  const raceData = sortRankFemaleData(augData);
+  const raceData = sortRankFemaleData(augData, 'FEMALE');
 
   return (
     <div className="container">
       <DisplayData data={raceData} />
-
-      <ul>
-        {raceData.map((item) => {
-          return (
-            <li key={item.id}>
-              Rank {item.index + 1} -{item.firstName} {item.fullName} -{" "}
-              {item.finishHour}:{item.finishMinute}:{item.finishSecond}-
-              {item.age}
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }
