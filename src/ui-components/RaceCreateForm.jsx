@@ -12,7 +12,8 @@ import {
   Flex,
   Grid,
   Heading,
-  SelectField,
+  Radio,
+  RadioGroupField,
   TextField,
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
@@ -34,8 +35,8 @@ export default function RaceCreateForm(props) {
     finishHour: "",
     finishMinute: "",
     finishSecond: "",
-    raceName: "",
     raceDate: "",
+    raceName: "",
     firstName: "",
     middleName: "",
     lastName: "",
@@ -50,8 +51,8 @@ export default function RaceCreateForm(props) {
   const [finishSecond, setFinishSecond] = React.useState(
     initialValues.finishSecond
   );
-  const [raceName, setRaceName] = React.useState(initialValues.raceName);
   const [raceDate, setRaceDate] = React.useState(initialValues.raceDate);
+  const [raceName, setRaceName] = React.useState(initialValues.raceName);
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [middleName, setMiddleName] = React.useState(initialValues.middleName);
   const [lastName, setLastName] = React.useState(initialValues.lastName);
@@ -65,8 +66,8 @@ export default function RaceCreateForm(props) {
     setFinishHour(initialValues.finishHour);
     setFinishMinute(initialValues.finishMinute);
     setFinishSecond(initialValues.finishSecond);
-    setRaceName(initialValues.raceName);
     setRaceDate(initialValues.raceDate);
+    setRaceName(initialValues.raceName);
     setFirstName(initialValues.firstName);
     setMiddleName(initialValues.middleName);
     setLastName(initialValues.lastName);
@@ -105,6 +106,7 @@ export default function RaceCreateForm(props) {
         validationMessage: "The value must be less than 60",
       },
     ],
+    raceDate: [{ type: "Required" }],
     raceName: [
       { type: "Required" },
       {
@@ -113,7 +115,6 @@ export default function RaceCreateForm(props) {
         validationMessage: "The value must be 100 characters or fewer",
       },
     ],
-    raceDate: [{ type: "Required" }],
     firstName: [
       { type: "Required" },
       {
@@ -169,8 +170,8 @@ export default function RaceCreateForm(props) {
           finishHour,
           finishMinute,
           finishSecond,
-          raceName,
           raceDate,
+          raceName,
           firstName,
           middleName,
           lastName,
@@ -234,7 +235,7 @@ export default function RaceCreateForm(props) {
       <Grid
         columnGap="inherit"
         rowGap="inherit"
-        templateColumns="repeat(3, auto)"
+        templateColumns="repeat(4, auto)"
         {...getOverrideProps(overrides, "RowGrid2")}
       >
         <TextField
@@ -254,8 +255,8 @@ export default function RaceCreateForm(props) {
                 finishHour: value,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName,
                 lastName,
@@ -277,7 +278,7 @@ export default function RaceCreateForm(props) {
           {...getOverrideProps(overrides, "finishHour")}
         ></TextField>
         <TextField
-          label="Finish minute"
+          label="Minute"
           isRequired={true}
           isReadOnly={false}
           placeholder="mm"
@@ -293,8 +294,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute: value,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName,
                 lastName,
@@ -316,7 +317,7 @@ export default function RaceCreateForm(props) {
           {...getOverrideProps(overrides, "finishMinute")}
         ></TextField>
         <TextField
-          label="Finish second"
+          label="Second"
           isRequired={true}
           isReadOnly={false}
           placeholder="ss"
@@ -332,8 +333,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond: value,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName,
                 lastName,
@@ -354,47 +355,6 @@ export default function RaceCreateForm(props) {
           hasError={errors.finishSecond?.hasError}
           {...getOverrideProps(overrides, "finishSecond")}
         ></TextField>
-      </Grid>
-      <Grid
-        columnGap="inherit"
-        rowGap="inherit"
-        templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid3")}
-      >
-        <TextField
-          label="Race name"
-          isRequired={true}
-          isReadOnly={false}
-          value={raceName}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishHour,
-                finishMinute,
-                finishSecond,
-                raceName: value,
-                raceDate,
-                firstName,
-                middleName,
-                lastName,
-                gender,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.raceName ?? value;
-            }
-            if (errors.raceName?.hasError) {
-              runValidationTasks("raceName", value);
-            }
-            setRaceName(value);
-          }}
-          onBlur={() => runValidationTasks("raceName", raceName)}
-          errorMessage={errors.raceName?.errorMessage}
-          hasError={errors.raceName?.hasError}
-          {...getOverrideProps(overrides, "raceName")}
-        ></TextField>
         <TextField
           label="Race date"
           isRequired={true}
@@ -408,8 +368,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate: value,
+                raceName,
                 firstName,
                 middleName,
                 lastName,
@@ -431,6 +391,40 @@ export default function RaceCreateForm(props) {
           {...getOverrideProps(overrides, "raceDate")}
         ></TextField>
       </Grid>
+      <TextField
+        label="Race name"
+        isRequired={true}
+        isReadOnly={false}
+        value={raceName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishHour,
+              finishMinute,
+              finishSecond,
+              raceDate,
+              raceName: value,
+              firstName,
+              middleName,
+              lastName,
+              gender,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.raceName ?? value;
+          }
+          if (errors.raceName?.hasError) {
+            runValidationTasks("raceName", value);
+          }
+          setRaceName(value);
+        }}
+        onBlur={() => runValidationTasks("raceName", raceName)}
+        errorMessage={errors.raceName?.errorMessage}
+        hasError={errors.raceName?.hasError}
+        {...getOverrideProps(overrides, "raceName")}
+      ></TextField>
       <Divider
         orientation="horizontal"
         {...getOverrideProps(overrides, "SectionalElement1")}
@@ -453,8 +447,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName: value,
                 middleName,
                 lastName,
@@ -487,8 +481,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName: value,
                 lastName,
@@ -521,8 +515,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName,
                 lastName: value,
@@ -547,14 +541,14 @@ export default function RaceCreateForm(props) {
       <Grid
         columnGap="inherit"
         rowGap="inherit"
-        templateColumns="repeat(2, auto)"
+        templateColumns="repeat(3, auto)"
         {...getOverrideProps(overrides, "RowGrid6")}
       >
-        <SelectField
+        <RadioGroupField
           label="Gender"
-          placeholder="Please select an option"
-          isDisabled={false}
-          value={gender}
+          name="gender"
+          isReadOnly={false}
+          isRequired={true}
           onChange={(e) => {
             let { value } = e.target;
             if (onChange) {
@@ -562,8 +556,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName,
                 lastName,
@@ -584,17 +578,17 @@ export default function RaceCreateForm(props) {
           hasError={errors.gender?.hasError}
           {...getOverrideProps(overrides, "gender")}
         >
-          <option
+          <Radio
             children="Male"
             value="MALE"
-            {...getOverrideProps(overrides, "genderoption0")}
-          ></option>
-          <option
+            {...getOverrideProps(overrides, "genderRadio0")}
+          ></Radio>
+          <Radio
             children="Female"
             value="FEMALE"
-            {...getOverrideProps(overrides, "genderoption1")}
-          ></option>
-        </SelectField>
+            {...getOverrideProps(overrides, "genderRadio1")}
+          ></Radio>
+        </RadioGroupField>
         <TextField
           label="Date of birth"
           isRequired={true}
@@ -608,8 +602,8 @@ export default function RaceCreateForm(props) {
                 finishHour,
                 finishMinute,
                 finishSecond,
-                raceName,
                 raceDate,
+                raceName,
                 firstName,
                 middleName,
                 lastName,
@@ -630,41 +624,41 @@ export default function RaceCreateForm(props) {
           hasError={errors.dateOfBirth?.hasError}
           {...getOverrideProps(overrides, "dateOfBirth")}
         ></TextField>
+        <TextField
+          label="Email"
+          isRequired={false}
+          isReadOnly={false}
+          value={email}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (onChange) {
+              const modelFields = {
+                finishHour,
+                finishMinute,
+                finishSecond,
+                raceDate,
+                raceName,
+                firstName,
+                middleName,
+                lastName,
+                gender,
+                dateOfBirth,
+                email: value,
+              };
+              const result = onChange(modelFields);
+              value = result?.email ?? value;
+            }
+            if (errors.email?.hasError) {
+              runValidationTasks("email", value);
+            }
+            setEmail(value);
+          }}
+          onBlur={() => runValidationTasks("email", email)}
+          errorMessage={errors.email?.errorMessage}
+          hasError={errors.email?.hasError}
+          {...getOverrideProps(overrides, "email")}
+        ></TextField>
       </Grid>
-      <TextField
-        label="Email"
-        isRequired={false}
-        isReadOnly={false}
-        value={email}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
-              raceName,
-              raceDate,
-              firstName,
-              middleName,
-              lastName,
-              gender,
-              dateOfBirth,
-              email: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.email ?? value;
-          }
-          if (errors.email?.hasError) {
-            runValidationTasks("email", value);
-          }
-          setEmail(value);
-        }}
-        onBlur={() => runValidationTasks("email", email)}
-        errorMessage={errors.email?.errorMessage}
-        hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
-      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

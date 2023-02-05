@@ -55,16 +55,16 @@ export function Header() {
       </Head>
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
-          <div className="relative z-10 flex items-center gap-16">
+          <div className="relative z-10 flex items-center gap-8">
             <Link href="/" aria-label="Home">
               <Logo className="h-7 w-auto" />
             </Link>
-            <div className="hidden lg:flex lg:gap-10">
+            <div className="hidden sm:flex sm:gap-3 md:flex md:gap-3 lg:flex lg:gap-5">
               <NavLinks />
             </div>
           </div>
           <div className="flex items-center gap-6">
-            <Popover className="lg:hidden">
+            <Popover className="sm:hidden">
               {({ open }) => (
                 <>
                   <Popover.Button
@@ -120,7 +120,7 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <Button href="/entry" variant="outline" className="hidden lg:block">
+            <Button href="/entry" variant="outline" className="hidden sm:block">
               I'd love to join
             </Button>
           </div>

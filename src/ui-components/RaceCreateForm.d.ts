@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { DividerProps, GridProps, HeadingProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { DividerProps, GridProps, HeadingProps, RadioGroupFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
@@ -16,8 +16,8 @@ export declare type RaceCreateFormInputValues = {
     finishHour?: number;
     finishMinute?: number;
     finishSecond?: number;
-    raceName?: string;
     raceDate?: string;
+    raceName?: string;
     firstName?: string;
     middleName?: string;
     lastName?: string;
@@ -29,8 +29,8 @@ export declare type RaceCreateFormValidationValues = {
     finishHour?: ValidationFunction<number>;
     finishMinute?: ValidationFunction<number>;
     finishSecond?: ValidationFunction<number>;
-    raceName?: ValidationFunction<string>;
     raceDate?: ValidationFunction<string>;
+    raceName?: ValidationFunction<string>;
     firstName?: ValidationFunction<string>;
     middleName?: ValidationFunction<string>;
     lastName?: ValidationFunction<string>;
@@ -47,16 +47,15 @@ export declare type RaceCreateFormOverridesProps = {
     finishHour?: PrimitiveOverrideProps<TextFieldProps>;
     finishMinute?: PrimitiveOverrideProps<TextFieldProps>;
     finishSecond?: PrimitiveOverrideProps<TextFieldProps>;
-    RowGrid3?: PrimitiveOverrideProps<GridProps>;
-    raceName?: PrimitiveOverrideProps<TextFieldProps>;
     raceDate?: PrimitiveOverrideProps<TextFieldProps>;
+    raceName?: PrimitiveOverrideProps<TextFieldProps>;
     SectionalElement1?: PrimitiveOverrideProps<DividerProps>;
     RowGrid5?: PrimitiveOverrideProps<GridProps>;
     firstName?: PrimitiveOverrideProps<TextFieldProps>;
     middleName?: PrimitiveOverrideProps<TextFieldProps>;
     lastName?: PrimitiveOverrideProps<TextFieldProps>;
     RowGrid6?: PrimitiveOverrideProps<GridProps>;
-    gender?: PrimitiveOverrideProps<SelectFieldProps>;
+    gender?: PrimitiveOverrideProps<RadioGroupFieldProps>;
     dateOfBirth?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;

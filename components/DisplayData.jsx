@@ -16,15 +16,10 @@ const columns = [
     sortable: true,
   },
   {
-    name: "Finish Time",
+    name: "Time",
     selector: (row) => row.finishTime,
     sortable: false,
   },
-  // {
-  //   name: "Finish Sec",
-  //   selector: (row) => row.finishTimeInSecond,
-  //   sortable: true,
-  // },
   {
     name: "Gender",
     selector: (row) => row.gender,
@@ -33,6 +28,11 @@ const columns = [
   {
     name: "Age",
     selector: (row) => row.age,
+    sortable: true,
+  },
+  {
+    name: "Age Group",
+    selector: (row) => row.ageGroup,
     sortable: true,
   },
   {
@@ -78,7 +78,7 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
     <TextField
       id="search"
       type="text"
-      placeholder="Filter by Athlete Name"
+      placeholder="Filter by Name"
       aria-label="Search Input"
       value={filterText}
       onChange={onFilter}
