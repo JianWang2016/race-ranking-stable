@@ -79,7 +79,7 @@ export function MaleAgeLinks() {
     ["60-69", "/male/60-69"],
     ["70-79", "/male/70-79"],
     ["80-89", "/male/80-89"],
-    ["90+", "/male/90+"],
+    ["90-100", "/male/90-100"],
   ].map(([label, href], index) => (
     <Link
       key={label}
@@ -118,7 +118,7 @@ export function FemaleAgeLinks() {
     ["60-69", "/female/60-69"],
     ["70-79", "/female/70-79"],
     ["80-89", "/female/80-89"],
-    ["90+", "/female/90+"],
+    ["90-100", "/female/90-100"],
   ].map(([label, href], index) => (
     <Link
       key={label}

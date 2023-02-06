@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { CallToAction } from "@/components/CallToAction";
-import { GetFemaleData } from "@/components/GetData2";
+import { GetData } from "@/components/GetData";
 import { FemaleAgeLinks } from "@/components/NavLinks";
 
 function Female() {
@@ -15,11 +15,11 @@ function Female() {
 
         <div className="mt-4 flex w-full justify-center md:w-auto">
           <nav className="flex gap-8">
-            <FemaleAgeLinks />
+            < FemaleAgeLinks  />
           </nav>
         </div>
 
-        <GetFemaleData />
+        <GetData gender="FEMALE" ageGroup="all" />
       </main>
     </>
   );

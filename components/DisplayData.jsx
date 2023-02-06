@@ -4,7 +4,41 @@ import { useState, useMemo } from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 
-const columns = [
+const all_columns = [
+  {
+    name: "Rank",
+    selector: (row) => row.index + 1,
+    sortable: false,
+  },
+  {
+    name: "Name",
+    selector: (row) => row.runnerName,
+    sortable: true,
+  },
+  {
+    name: "Time",
+    selector: (row) => row.finishTime,
+    sortable: false,
+  },
+  {
+    name: "Gender",
+    selector: (row) => row.gender,
+    sortable: true,
+  },
+  {
+    name: "Age",
+    selector: (row) => row.age,
+    sortable: true,
+  },
+  {
+    name: "Race Name",
+    selector: (row) => row.raceName,
+    sortable: true,
+    wrap: true,
+  },
+];
+
+const age_columns = [
   {
     name: "Rank",
     selector: (row) => row.index + 1,
@@ -89,7 +123,12 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
   </>
 );
 
-function DisplayData({ data }) {
+function DisplayData({ data, ageColumn }) {
+  let columns = all_columns;
+  if (ageColumn == true) {
+    columns = age_columns;
+  }
+
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const filteredItems = data.filter(
