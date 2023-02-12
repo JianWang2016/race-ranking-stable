@@ -10,27 +10,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "finishHour": {
-                    "name": "finishHour",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "finishMinute": {
-                    "name": "finishMinute",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "finishSecond": {
-                    "name": "finishSecond",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "raceName": {
                     "name": "raceName",
                     "isArray": false,
@@ -89,6 +68,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "finishTime": {
+                    "name": "finishTime",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -136,12 +122,12 @@ export const schema = {
         "GenderType": {
             "name": "GenderType",
             "values": [
-                "MALE",
-                "FEMALE"
+                "M",
+                "F"
             ]
         }
     },
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "9195710874ad71b2355ba8e1a5feca5d"
+    "version": "193939f2f9ebdb6af2a2b213218edf36"
 };

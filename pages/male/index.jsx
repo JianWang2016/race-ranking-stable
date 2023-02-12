@@ -1,23 +1,22 @@
-import Head from "next/head";
-
-import { CallToAction } from "@/components/CallToAction";
-import { GetData } from "@/components/GetData";
 import { MaleAgeLinks } from "@/components/NavLinks";
+import { useData } from "..";
+import SortRankDisplay from "@/components/SortRankDisplay";
 
 function Male() {
+  const { data, error, isLoading } = useData();
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
   return (
     <>
       <main>
-        <CallToAction
-          field1=""
-          field2="2022 Marathon Best Time - Male"
-        />
         <div className="mt-4 flex w-full justify-center md:w-auto">
           <nav className="flex gap-8">
             <MaleAgeLinks />
           </nav>
         </div>
-        <GetData gender="MALE" ageGroup="all"/>
+        <SortRankDisplay gender="M" ageGroup="all" data={data} />
       </main>
     </>
   );

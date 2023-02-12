@@ -30,9 +30,6 @@ export default function RaceUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    finishHour: "",
-    finishMinute: "",
-    finishSecond: "",
     raceName: "",
     raceDate: "",
     firstName: "",
@@ -41,14 +38,8 @@ export default function RaceUpdateForm(props) {
     gender: undefined,
     dateOfBirth: "",
     email: "",
+    finishTime: "",
   };
-  const [finishHour, setFinishHour] = React.useState(initialValues.finishHour);
-  const [finishMinute, setFinishMinute] = React.useState(
-    initialValues.finishMinute
-  );
-  const [finishSecond, setFinishSecond] = React.useState(
-    initialValues.finishSecond
-  );
   const [raceName, setRaceName] = React.useState(initialValues.raceName);
   const [raceDate, setRaceDate] = React.useState(initialValues.raceDate);
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
@@ -59,14 +50,12 @@ export default function RaceUpdateForm(props) {
     initialValues.dateOfBirth
   );
   const [email, setEmail] = React.useState(initialValues.email);
+  const [finishTime, setFinishTime] = React.useState(initialValues.finishTime);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = raceRecord
       ? { ...initialValues, ...raceRecord }
       : initialValues;
-    setFinishHour(cleanValues.finishHour);
-    setFinishMinute(cleanValues.finishMinute);
-    setFinishSecond(cleanValues.finishSecond);
     setRaceName(cleanValues.raceName);
     setRaceDate(cleanValues.raceDate);
     setFirstName(cleanValues.firstName);
@@ -75,6 +64,7 @@ export default function RaceUpdateForm(props) {
     setGender(cleanValues.gender);
     setDateOfBirth(cleanValues.dateOfBirth);
     setEmail(cleanValues.email);
+    setFinishTime(cleanValues.finishTime);
     setErrors({});
   };
   const [raceRecord, setRaceRecord] = React.useState(race);
@@ -87,9 +77,6 @@ export default function RaceUpdateForm(props) {
   }, [idProp, race]);
   React.useEffect(resetStateValues, [raceRecord]);
   const validations = {
-    finishHour: [{ type: "Required" }],
-    finishMinute: [{ type: "Required" }],
-    finishSecond: [{ type: "Required" }],
     raceName: [{ type: "Required" }],
     raceDate: [{ type: "Required" }],
     firstName: [{ type: "Required" }],
@@ -98,6 +85,7 @@ export default function RaceUpdateForm(props) {
     gender: [{ type: "Required" }],
     dateOfBirth: [{ type: "Required" }],
     email: [{ type: "Email" }],
+    finishTime: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -124,9 +112,6 @@ export default function RaceUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          finishHour,
-          finishMinute,
-          finishSecond,
           raceName,
           raceDate,
           firstName,
@@ -135,6 +120,7 @@ export default function RaceUpdateForm(props) {
           gender,
           dateOfBirth,
           email,
+          finishTime,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -182,120 +168,6 @@ export default function RaceUpdateForm(props) {
       {...rest}
     >
       <TextField
-        label="Finish hour"
-        isRequired={true}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={finishHour}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              finishHour: value,
-              finishMinute,
-              finishSecond,
-              raceName,
-              raceDate,
-              firstName,
-              middleName,
-              lastName,
-              gender,
-              dateOfBirth,
-              email,
-            };
-            const result = onChange(modelFields);
-            value = result?.finishHour ?? value;
-          }
-          if (errors.finishHour?.hasError) {
-            runValidationTasks("finishHour", value);
-          }
-          setFinishHour(value);
-        }}
-        onBlur={() => runValidationTasks("finishHour", finishHour)}
-        errorMessage={errors.finishHour?.errorMessage}
-        hasError={errors.finishHour?.hasError}
-        {...getOverrideProps(overrides, "finishHour")}
-      ></TextField>
-      <TextField
-        label="Finish minute"
-        isRequired={true}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={finishMinute}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              finishHour,
-              finishMinute: value,
-              finishSecond,
-              raceName,
-              raceDate,
-              firstName,
-              middleName,
-              lastName,
-              gender,
-              dateOfBirth,
-              email,
-            };
-            const result = onChange(modelFields);
-            value = result?.finishMinute ?? value;
-          }
-          if (errors.finishMinute?.hasError) {
-            runValidationTasks("finishMinute", value);
-          }
-          setFinishMinute(value);
-        }}
-        onBlur={() => runValidationTasks("finishMinute", finishMinute)}
-        errorMessage={errors.finishMinute?.errorMessage}
-        hasError={errors.finishMinute?.hasError}
-        {...getOverrideProps(overrides, "finishMinute")}
-      ></TextField>
-      <TextField
-        label="Finish second"
-        isRequired={true}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={finishSecond}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond: value,
-              raceName,
-              raceDate,
-              firstName,
-              middleName,
-              lastName,
-              gender,
-              dateOfBirth,
-              email,
-            };
-            const result = onChange(modelFields);
-            value = result?.finishSecond ?? value;
-          }
-          if (errors.finishSecond?.hasError) {
-            runValidationTasks("finishSecond", value);
-          }
-          setFinishSecond(value);
-        }}
-        onBlur={() => runValidationTasks("finishSecond", finishSecond)}
-        errorMessage={errors.finishSecond?.errorMessage}
-        hasError={errors.finishSecond?.hasError}
-        {...getOverrideProps(overrides, "finishSecond")}
-      ></TextField>
-      <TextField
         label="Race name"
         isRequired={true}
         isReadOnly={false}
@@ -304,9 +176,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName: value,
               raceDate,
               firstName,
@@ -315,6 +184,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.raceName ?? value;
@@ -339,9 +209,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate: value,
               firstName,
@@ -350,6 +217,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.raceDate ?? value;
@@ -373,9 +241,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate,
               firstName: value,
@@ -384,6 +249,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.firstName ?? value;
@@ -407,9 +273,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate,
               firstName,
@@ -418,6 +281,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.middleName ?? value;
@@ -441,9 +305,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate,
               firstName,
@@ -452,6 +313,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.lastName ?? value;
@@ -475,9 +337,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate,
               firstName,
@@ -486,6 +345,7 @@ export default function RaceUpdateForm(props) {
               gender: value,
               dateOfBirth,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.gender ?? value;
@@ -501,13 +361,13 @@ export default function RaceUpdateForm(props) {
         {...getOverrideProps(overrides, "gender")}
       >
         <option
-          children="Male"
-          value="MALE"
+          children="M"
+          value="M"
           {...getOverrideProps(overrides, "genderoption0")}
         ></option>
         <option
-          children="Female"
-          value="FEMALE"
+          children="F"
+          value="F"
           {...getOverrideProps(overrides, "genderoption1")}
         ></option>
       </SelectField>
@@ -521,9 +381,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate,
               firstName,
@@ -532,6 +389,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth: value,
               email,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.dateOfBirth ?? value;
@@ -555,9 +413,6 @@ export default function RaceUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              finishHour,
-              finishMinute,
-              finishSecond,
               raceName,
               raceDate,
               firstName,
@@ -566,6 +421,7 @@ export default function RaceUpdateForm(props) {
               gender,
               dateOfBirth,
               email: value,
+              finishTime,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -579,6 +435,38 @@ export default function RaceUpdateForm(props) {
         errorMessage={errors.email?.errorMessage}
         hasError={errors.email?.hasError}
         {...getOverrideProps(overrides, "email")}
+      ></TextField>
+      <TextField
+        label="Finish time"
+        isRequired={true}
+        isReadOnly={false}
+        value={finishTime}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              raceName,
+              raceDate,
+              firstName,
+              middleName,
+              lastName,
+              gender,
+              dateOfBirth,
+              email,
+              finishTime: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.finishTime ?? value;
+          }
+          if (errors.finishTime?.hasError) {
+            runValidationTasks("finishTime", value);
+          }
+          setFinishTime(value);
+        }}
+        onBlur={() => runValidationTasks("finishTime", finishTime)}
+        errorMessage={errors.finishTime?.errorMessage}
+        hasError={errors.finishTime?.hasError}
+        {...getOverrideProps(overrides, "finishTime")}
       ></TextField>
       <Flex
         justifyContent="space-between"

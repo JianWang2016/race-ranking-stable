@@ -13,9 +13,7 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RaceCreateFormInputValues = {
-    finishHour?: number;
-    finishMinute?: number;
-    finishSecond?: number;
+    finishTime?: string;
     raceDate?: string;
     raceName?: string;
     firstName?: string;
@@ -26,9 +24,7 @@ export declare type RaceCreateFormInputValues = {
     email?: string;
 };
 export declare type RaceCreateFormValidationValues = {
-    finishHour?: ValidationFunction<number>;
-    finishMinute?: ValidationFunction<number>;
-    finishSecond?: ValidationFunction<number>;
+    finishTime?: ValidationFunction<string>;
     raceDate?: ValidationFunction<string>;
     raceName?: ValidationFunction<string>;
     firstName?: ValidationFunction<string>;
@@ -44,9 +40,7 @@ export declare type RaceCreateFormOverridesProps = {
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement2?: PrimitiveOverrideProps<DividerProps>;
     RowGrid2?: PrimitiveOverrideProps<GridProps>;
-    finishHour?: PrimitiveOverrideProps<TextFieldProps>;
-    finishMinute?: PrimitiveOverrideProps<TextFieldProps>;
-    finishSecond?: PrimitiveOverrideProps<TextFieldProps>;
+    finishTime?: PrimitiveOverrideProps<TextFieldProps>;
     raceDate?: PrimitiveOverrideProps<TextFieldProps>;
     raceName?: PrimitiveOverrideProps<TextFieldProps>;
     SectionalElement1?: PrimitiveOverrideProps<DividerProps>;

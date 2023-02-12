@@ -14,9 +14,6 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RaceUpdateFormInputValues = {
-    finishHour?: number;
-    finishMinute?: number;
-    finishSecond?: number;
     raceName?: string;
     raceDate?: string;
     firstName?: string;
@@ -25,11 +22,9 @@ export declare type RaceUpdateFormInputValues = {
     gender?: string;
     dateOfBirth?: string;
     email?: string;
+    finishTime?: string;
 };
 export declare type RaceUpdateFormValidationValues = {
-    finishHour?: ValidationFunction<number>;
-    finishMinute?: ValidationFunction<number>;
-    finishSecond?: ValidationFunction<number>;
     raceName?: ValidationFunction<string>;
     raceDate?: ValidationFunction<string>;
     firstName?: ValidationFunction<string>;
@@ -38,13 +33,11 @@ export declare type RaceUpdateFormValidationValues = {
     gender?: ValidationFunction<string>;
     dateOfBirth?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
+    finishTime?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RaceUpdateFormOverridesProps = {
     RaceUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    finishHour?: PrimitiveOverrideProps<TextFieldProps>;
-    finishMinute?: PrimitiveOverrideProps<TextFieldProps>;
-    finishSecond?: PrimitiveOverrideProps<TextFieldProps>;
     raceName?: PrimitiveOverrideProps<TextFieldProps>;
     raceDate?: PrimitiveOverrideProps<TextFieldProps>;
     firstName?: PrimitiveOverrideProps<TextFieldProps>;
@@ -53,6 +46,7 @@ export declare type RaceUpdateFormOverridesProps = {
     gender?: PrimitiveOverrideProps<SelectFieldProps>;
     dateOfBirth?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
+    finishTime?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type RaceUpdateFormProps = React.PropsWithChildren<{
     overrides?: RaceUpdateFormOverridesProps | undefined | null;

@@ -1,17 +1,60 @@
-import Head from "next/head";
+import { withSSRContext } from "aws-amplify";
+import { listRaces } from "@/src/graphql/queries";
+import useSwR from "swr";
+import ProcessData from "@/components/ProcessData";
+import SortRankDisplay from "@/components/SortRankDisplay";
 
-import { CallToAction } from "@/components/CallToAction";
-import { GetData } from "@/components/GetData";
-import { Disclosure } from "@headlessui/react";
+const fetcher = async () => {
+  const SSR = withSSRContext();
+  const response = await SSR.API.graphql({ query: listRaces });
+  const data = response.data.listRaces.items;
 
-export default function Home() {
+  const augData = ProcessData(data);
+
+  return augData;
+};
+
+export function useData() {
+  const { data, error, isLoading } = useSwR("allRaceRawData", fetcher);
+
+  return {
+    data,
+    error,
+    isLoading,
+  };
+}
+
+function AllRaces() {
+  //const { data, error, isLoading } = useSwR("allRaceRawData", fetcher);
+
+  const { data, error, isLoading } = useData();
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
+  //   return (
+  //     <>
+  //       <div>
+  //         <h2>List of Races</h2>
+  //       </div>
+  //       {data.map((race) => {
+  //         return (
+  //           <div key={race.id}>
+  //             <h2>
+  //               {race.raceName} {race.firstName} {race.gender} {race.age}
+  //             </h2>
+  //           </div>
+  //         );
+  //       })}
+  //     </>
+  //   );
+
   return (
     <>
       <main>
-        <CallToAction field1="" field2="Rank 2022 Marathon Best Time - All" />
-
-        <GetData gender="BOTH" ageGroup="all" />
+        <SortRankDisplay gender="BOTH" ageGroup="all" data={data} />
       </main>
     </>
   );
 }
+export default AllRaces;

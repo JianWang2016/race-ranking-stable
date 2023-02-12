@@ -5,9 +5,6 @@ export const getRace = /* GraphQL */ `
   query GetRace($id: ID!) {
     getRace(id: $id) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -16,6 +13,7 @@ export const getRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version
@@ -33,9 +31,6 @@ export const listRaces = /* GraphQL */ `
     listRaces(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        finishHour
-        finishMinute
-        finishSecond
         raceName
         raceDate
         firstName
@@ -44,6 +39,7 @@ export const listRaces = /* GraphQL */ `
         gender
         dateOfBirth
         email
+        finishTime
         createdAt
         updatedAt
         _version
@@ -70,9 +66,6 @@ export const syncRaces = /* GraphQL */ `
     ) {
       items {
         id
-        finishHour
-        finishMinute
-        finishSecond
         raceName
         raceDate
         firstName
@@ -81,6 +74,7 @@ export const syncRaces = /* GraphQL */ `
         gender
         dateOfBirth
         email
+        finishTime
         createdAt
         updatedAt
         _version

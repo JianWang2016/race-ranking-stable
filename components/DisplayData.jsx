@@ -9,26 +9,37 @@ const all_columns = [
     name: "Rank",
     selector: (row) => row.index + 1,
     sortable: false,
+    width: "70px",
+    compact: false,
   },
   {
     name: "Name",
     selector: (row) => row.runnerName,
     sortable: true,
+    width: "80px",
+    compact: true,
+    wrap: true,
   },
   {
     name: "Time",
     selector: (row) => row.finishTime,
     sortable: false,
+    width: "80px",
+    compact: true,
   },
   {
     name: "Gender",
     selector: (row) => row.gender,
     sortable: true,
+    width: "70px",
+    compact: true,
   },
   {
     name: "Age",
     selector: (row) => row.age,
     sortable: true,
+    width: "60px",
+    compact: true,
   },
   {
     name: "Race Name",
@@ -43,31 +54,44 @@ const age_columns = [
     name: "Rank",
     selector: (row) => row.index + 1,
     sortable: false,
+    width: "70px",
+    compact: false,
   },
   {
     name: "Name",
     selector: (row) => row.runnerName,
     sortable: true,
+    width: "80px",
+    compact: true,
+    wrap: true,
   },
   {
     name: "Time",
     selector: (row) => row.finishTime,
     sortable: false,
+    width: "80px",
+    compact: true,
   },
   {
     name: "Gender",
     selector: (row) => row.gender,
     sortable: true,
+    width: "70px",
+    compact: true,
   },
   {
     name: "Age",
     selector: (row) => row.age,
     sortable: true,
+    width: "60px",
+    compact: true,
   },
   {
     name: "Age Group",
     selector: (row) => row.ageGroup,
     sortable: true,
+    width: "80px",
+    compact: true,
   },
   {
     name: "Race Name",
@@ -123,7 +147,7 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
   </>
 );
 
-function DisplayData({ data, ageColumn }) {
+function DisplayData({ data, ageColumn, title }) {
   let columns = all_columns;
   if (ageColumn == true) {
     columns = age_columns;
@@ -158,6 +182,7 @@ function DisplayData({ data, ageColumn }) {
     <>
       <div>
         <DataTable
+          title={title}
           dense
           pagination
           paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
@@ -167,6 +192,7 @@ function DisplayData({ data, ageColumn }) {
           responsive
           highlightOnHover
           striped
+          noDataComponent="No record in this category"
           columns={columns}
           data={filteredItems}
         />

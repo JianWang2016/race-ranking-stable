@@ -8,9 +8,6 @@ export const createRace = /* GraphQL */ `
   ) {
     createRace(input: $input, condition: $condition) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -19,6 +16,7 @@ export const createRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version
@@ -34,9 +32,6 @@ export const updateRace = /* GraphQL */ `
   ) {
     updateRace(input: $input, condition: $condition) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -45,6 +40,7 @@ export const updateRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version
@@ -60,9 +56,6 @@ export const deleteRace = /* GraphQL */ `
   ) {
     deleteRace(input: $input, condition: $condition) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -71,6 +64,7 @@ export const deleteRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version

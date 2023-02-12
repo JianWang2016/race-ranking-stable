@@ -1,13 +1,10 @@
 enum GenderType {
-  MALE
-  FEMALE
+  M
+  F
 }
 
 type Race @model @auth(rules: [{allow: public}]) {
   id: ID!
-  finishHour: Int!
-  finishMinute: Int!
-  finishSecond: Int!
   raceName: String!
   raceDate: AWSDate!
   firstName: String!
@@ -16,4 +13,6 @@ type Race @model @auth(rules: [{allow: public}]) {
   gender: GenderType!
   dateOfBirth: AWSDate!
   email: AWSEmail
+  finishTime: String!
 }
+ 

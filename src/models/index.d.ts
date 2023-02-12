@@ -3,8 +3,8 @@ import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-
 import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 export enum GenderType {
-  MALE = "MALE",
-  FEMALE = "FEMALE"
+  M = "M",
+  F = "F"
 }
 
 
@@ -15,9 +15,6 @@ type EagerRace = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly finishHour: number;
-  readonly finishMinute: number;
-  readonly finishSecond: number;
   readonly raceName: string;
   readonly raceDate: string;
   readonly firstName: string;
@@ -26,6 +23,7 @@ type EagerRace = {
   readonly gender: GenderType | keyof typeof GenderType;
   readonly dateOfBirth: string;
   readonly email?: string | null;
+  readonly finishTime: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -36,9 +34,6 @@ type LazyRace = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly finishHour: number;
-  readonly finishMinute: number;
-  readonly finishSecond: number;
   readonly raceName: string;
   readonly raceDate: string;
   readonly firstName: string;
@@ -47,6 +42,7 @@ type LazyRace = {
   readonly gender: GenderType | keyof typeof GenderType;
   readonly dateOfBirth: string;
   readonly email?: string | null;
+  readonly finishTime: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -5,9 +5,6 @@ export const onCreateRace = /* GraphQL */ `
   subscription OnCreateRace($filter: ModelSubscriptionRaceFilterInput) {
     onCreateRace(filter: $filter) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -16,6 +13,7 @@ export const onCreateRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version
@@ -28,9 +26,6 @@ export const onUpdateRace = /* GraphQL */ `
   subscription OnUpdateRace($filter: ModelSubscriptionRaceFilterInput) {
     onUpdateRace(filter: $filter) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -39,6 +34,7 @@ export const onUpdateRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version
@@ -51,9 +47,6 @@ export const onDeleteRace = /* GraphQL */ `
   subscription OnDeleteRace($filter: ModelSubscriptionRaceFilterInput) {
     onDeleteRace(filter: $filter) {
       id
-      finishHour
-      finishMinute
-      finishSecond
       raceName
       raceDate
       firstName
@@ -62,6 +55,7 @@ export const onDeleteRace = /* GraphQL */ `
       gender
       dateOfBirth
       email
+      finishTime
       createdAt
       updatedAt
       _version
