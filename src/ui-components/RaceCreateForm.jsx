@@ -15,6 +15,7 @@ import {
   Radio,
   RadioGroupField,
   TextField,
+  useTheme,
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Race } from "../models";
@@ -31,6 +32,7 @@ export default function RaceCreateForm(props) {
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     finishTime: "",
     raceDate: "",
@@ -131,7 +133,7 @@ export default function RaceCreateForm(props) {
     <Grid
       as="form"
       rowGap="15px"
-      columnGap="15px"
+      columnGap={tokens.space.xs.value}
       padding="20px"
       onSubmit={async (event) => {
         event.preventDefault();
@@ -199,79 +201,72 @@ export default function RaceCreateForm(props) {
         orientation="horizontal"
         {...getOverrideProps(overrides, "SectionalElement2")}
       ></Divider>
-      <Grid
-        columnGap="inherit"
-        rowGap="inherit"
-        templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid2")}
-      >
-        <TextField
-          label="Finish time"
-          isRequired={true}
-          isReadOnly={false}
-          placeholder="h:mm:ss"
-          value={finishTime}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime: value,
-                raceDate,
-                raceName,
-                firstName,
-                middleName,
-                lastName,
-                gender,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.finishTime ?? value;
-            }
-            if (errors.finishTime?.hasError) {
-              runValidationTasks("finishTime", value);
-            }
-            setFinishTime(value);
-          }}
-          onBlur={() => runValidationTasks("finishTime", finishTime)}
-          errorMessage={errors.finishTime?.errorMessage}
-          hasError={errors.finishTime?.hasError}
-          {...getOverrideProps(overrides, "finishTime")}
-        ></TextField>
-        <TextField
-          label="Race date"
-          isRequired={true}
-          isReadOnly={false}
-          type="date"
-          value={raceDate}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime,
-                raceDate: value,
-                raceName,
-                firstName,
-                middleName,
-                lastName,
-                gender,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.raceDate ?? value;
-            }
-            if (errors.raceDate?.hasError) {
-              runValidationTasks("raceDate", value);
-            }
-            setRaceDate(value);
-          }}
-          onBlur={() => runValidationTasks("raceDate", raceDate)}
-          errorMessage={errors.raceDate?.errorMessage}
-          hasError={errors.raceDate?.hasError}
-          {...getOverrideProps(overrides, "raceDate")}
-        ></TextField>
-      </Grid>
+      <TextField
+        label="Finish time"
+        isRequired={true}
+        isReadOnly={false}
+        placeholder="h:mm:ss"
+        value={finishTime}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime: value,
+              raceDate,
+              raceName,
+              firstName,
+              middleName,
+              lastName,
+              gender,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.finishTime ?? value;
+          }
+          if (errors.finishTime?.hasError) {
+            runValidationTasks("finishTime", value);
+          }
+          setFinishTime(value);
+        }}
+        onBlur={() => runValidationTasks("finishTime", finishTime)}
+        errorMessage={errors.finishTime?.errorMessage}
+        hasError={errors.finishTime?.hasError}
+        {...getOverrideProps(overrides, "finishTime")}
+      ></TextField>
+      <TextField
+        label="Race date"
+        isRequired={true}
+        isReadOnly={false}
+        type="date"
+        value={raceDate}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime,
+              raceDate: value,
+              raceName,
+              firstName,
+              middleName,
+              lastName,
+              gender,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.raceDate ?? value;
+          }
+          if (errors.raceDate?.hasError) {
+            runValidationTasks("raceDate", value);
+          }
+          setRaceDate(value);
+        }}
+        onBlur={() => runValidationTasks("raceDate", raceDate)}
+        errorMessage={errors.raceDate?.errorMessage}
+        hasError={errors.raceDate?.hasError}
+        {...getOverrideProps(overrides, "raceDate")}
+      ></TextField>
       <TextField
         label="Race name"
         isRequired={true}
@@ -309,195 +304,181 @@ export default function RaceCreateForm(props) {
         orientation="horizontal"
         {...getOverrideProps(overrides, "SectionalElement1")}
       ></Divider>
-      <Grid
-        columnGap="inherit"
-        rowGap="inherit"
-        templateColumns="repeat(3, auto)"
-        {...getOverrideProps(overrides, "RowGrid5")}
+      <TextField
+        label="First name"
+        isRequired={true}
+        isReadOnly={false}
+        placeholder="First name"
+        value={firstName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime,
+              raceDate,
+              raceName,
+              firstName: value,
+              middleName,
+              lastName,
+              gender,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.firstName ?? value;
+          }
+          if (errors.firstName?.hasError) {
+            runValidationTasks("firstName", value);
+          }
+          setFirstName(value);
+        }}
+        onBlur={() => runValidationTasks("firstName", firstName)}
+        errorMessage={errors.firstName?.errorMessage}
+        hasError={errors.firstName?.hasError}
+        {...getOverrideProps(overrides, "firstName")}
+      ></TextField>
+      <TextField
+        label="M.I."
+        isRequired={false}
+        isReadOnly={false}
+        placeholder="M.I"
+        value={middleName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime,
+              raceDate,
+              raceName,
+              firstName,
+              middleName: value,
+              lastName,
+              gender,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.middleName ?? value;
+          }
+          if (errors.middleName?.hasError) {
+            runValidationTasks("middleName", value);
+          }
+          setMiddleName(value);
+        }}
+        onBlur={() => runValidationTasks("middleName", middleName)}
+        errorMessage={errors.middleName?.errorMessage}
+        hasError={errors.middleName?.hasError}
+        {...getOverrideProps(overrides, "middleName")}
+      ></TextField>
+      <TextField
+        label="Last name"
+        isRequired={true}
+        isReadOnly={false}
+        placeholder="Last name"
+        value={lastName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime,
+              raceDate,
+              raceName,
+              firstName,
+              middleName,
+              lastName: value,
+              gender,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.lastName ?? value;
+          }
+          if (errors.lastName?.hasError) {
+            runValidationTasks("lastName", value);
+          }
+          setLastName(value);
+        }}
+        onBlur={() => runValidationTasks("lastName", lastName)}
+        errorMessage={errors.lastName?.errorMessage}
+        hasError={errors.lastName?.hasError}
+        {...getOverrideProps(overrides, "lastName")}
+      ></TextField>
+      <RadioGroupField
+        label="Gender"
+        name="gender"
+        isReadOnly={false}
+        isRequired={true}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime,
+              raceDate,
+              raceName,
+              firstName,
+              middleName,
+              lastName,
+              gender: value,
+              dateOfBirth,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.gender ?? value;
+          }
+          if (errors.gender?.hasError) {
+            runValidationTasks("gender", value);
+          }
+          setGender(value);
+        }}
+        onBlur={() => runValidationTasks("gender", gender)}
+        errorMessage={errors.gender?.errorMessage}
+        hasError={errors.gender?.hasError}
+        {...getOverrideProps(overrides, "gender")}
       >
-        <TextField
-          label="First name"
-          isRequired={true}
-          isReadOnly={false}
-          placeholder="First name"
-          value={firstName}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime,
-                raceDate,
-                raceName,
-                firstName: value,
-                middleName,
-                lastName,
-                gender,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.firstName ?? value;
-            }
-            if (errors.firstName?.hasError) {
-              runValidationTasks("firstName", value);
-            }
-            setFirstName(value);
-          }}
-          onBlur={() => runValidationTasks("firstName", firstName)}
-          errorMessage={errors.firstName?.errorMessage}
-          hasError={errors.firstName?.hasError}
-          {...getOverrideProps(overrides, "firstName")}
-        ></TextField>
-        <TextField
-          label="M.I."
-          isRequired={false}
-          isReadOnly={false}
-          placeholder="M.I"
-          value={middleName}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime,
-                raceDate,
-                raceName,
-                firstName,
-                middleName: value,
-                lastName,
-                gender,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.middleName ?? value;
-            }
-            if (errors.middleName?.hasError) {
-              runValidationTasks("middleName", value);
-            }
-            setMiddleName(value);
-          }}
-          onBlur={() => runValidationTasks("middleName", middleName)}
-          errorMessage={errors.middleName?.errorMessage}
-          hasError={errors.middleName?.hasError}
-          {...getOverrideProps(overrides, "middleName")}
-        ></TextField>
-        <TextField
-          label="Last name"
-          isRequired={true}
-          isReadOnly={false}
-          placeholder="Last name"
-          value={lastName}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime,
-                raceDate,
-                raceName,
-                firstName,
-                middleName,
-                lastName: value,
-                gender,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.lastName ?? value;
-            }
-            if (errors.lastName?.hasError) {
-              runValidationTasks("lastName", value);
-            }
-            setLastName(value);
-          }}
-          onBlur={() => runValidationTasks("lastName", lastName)}
-          errorMessage={errors.lastName?.errorMessage}
-          hasError={errors.lastName?.hasError}
-          {...getOverrideProps(overrides, "lastName")}
-        ></TextField>
-      </Grid>
-      <Grid
-        columnGap="inherit"
-        rowGap="inherit"
-        templateColumns="repeat(2, auto)"
-        {...getOverrideProps(overrides, "RowGrid6")}
-      >
-        <RadioGroupField
-          label="Gender"
-          name="gender"
-          isReadOnly={false}
-          isRequired={true}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime,
-                raceDate,
-                raceName,
-                firstName,
-                middleName,
-                lastName,
-                gender: value,
-                dateOfBirth,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.gender ?? value;
-            }
-            if (errors.gender?.hasError) {
-              runValidationTasks("gender", value);
-            }
-            setGender(value);
-          }}
-          onBlur={() => runValidationTasks("gender", gender)}
-          errorMessage={errors.gender?.errorMessage}
-          hasError={errors.gender?.hasError}
-          {...getOverrideProps(overrides, "gender")}
-        >
-          <Radio
-            children="M"
-            value="M"
-            {...getOverrideProps(overrides, "genderRadio0")}
-          ></Radio>
-          <Radio
-            children="F"
-            value="F"
-            {...getOverrideProps(overrides, "genderRadio1")}
-          ></Radio>
-        </RadioGroupField>
-        <TextField
-          label="Date of birth"
-          isRequired={true}
-          isReadOnly={false}
-          type="date"
-          value={dateOfBirth}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (onChange) {
-              const modelFields = {
-                finishTime,
-                raceDate,
-                raceName,
-                firstName,
-                middleName,
-                lastName,
-                gender,
-                dateOfBirth: value,
-                email,
-              };
-              const result = onChange(modelFields);
-              value = result?.dateOfBirth ?? value;
-            }
-            if (errors.dateOfBirth?.hasError) {
-              runValidationTasks("dateOfBirth", value);
-            }
-            setDateOfBirth(value);
-          }}
-          onBlur={() => runValidationTasks("dateOfBirth", dateOfBirth)}
-          errorMessage={errors.dateOfBirth?.errorMessage}
-          hasError={errors.dateOfBirth?.hasError}
-          {...getOverrideProps(overrides, "dateOfBirth")}
-        ></TextField>
-      </Grid>
+        <Radio
+          children="M"
+          value="M"
+          {...getOverrideProps(overrides, "genderRadio0")}
+        ></Radio>
+        <Radio
+          children="F"
+          value="F"
+          {...getOverrideProps(overrides, "genderRadio1")}
+        ></Radio>
+      </RadioGroupField>
+      <TextField
+        label="Date of birth"
+        isRequired={true}
+        isReadOnly={false}
+        type="date"
+        value={dateOfBirth}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              finishTime,
+              raceDate,
+              raceName,
+              firstName,
+              middleName,
+              lastName,
+              gender,
+              dateOfBirth: value,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.dateOfBirth ?? value;
+          }
+          if (errors.dateOfBirth?.hasError) {
+            runValidationTasks("dateOfBirth", value);
+          }
+          setDateOfBirth(value);
+        }}
+        onBlur={() => runValidationTasks("dateOfBirth", dateOfBirth)}
+        errorMessage={errors.dateOfBirth?.errorMessage}
+        hasError={errors.dateOfBirth?.hasError}
+        {...getOverrideProps(overrides, "dateOfBirth")}
+      ></TextField>
       <TextField
         label="Email"
         isRequired={false}
@@ -544,7 +525,7 @@ export default function RaceCreateForm(props) {
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
-          gap="15px"
+          gap={tokens.space.xs.value}
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button

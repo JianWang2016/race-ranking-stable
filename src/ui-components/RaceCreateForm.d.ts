@@ -39,16 +39,13 @@ export declare type RaceCreateFormOverridesProps = {
     RaceCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement2?: PrimitiveOverrideProps<DividerProps>;
-    RowGrid2?: PrimitiveOverrideProps<GridProps>;
     finishTime?: PrimitiveOverrideProps<TextFieldProps>;
     raceDate?: PrimitiveOverrideProps<TextFieldProps>;
     raceName?: PrimitiveOverrideProps<TextFieldProps>;
     SectionalElement1?: PrimitiveOverrideProps<DividerProps>;
-    RowGrid5?: PrimitiveOverrideProps<GridProps>;
     firstName?: PrimitiveOverrideProps<TextFieldProps>;
     middleName?: PrimitiveOverrideProps<TextFieldProps>;
     lastName?: PrimitiveOverrideProps<TextFieldProps>;
-    RowGrid6?: PrimitiveOverrideProps<GridProps>;
     gender?: PrimitiveOverrideProps<RadioGroupFieldProps>;
     dateOfBirth?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
