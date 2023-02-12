@@ -9,7 +9,7 @@ const all_columns = [
     name: "Rank",
     selector: (row) => row.index + 1,
     sortable: false,
-    width: "70px",
+    width: "65px",
     compact: false,
   },
   {
@@ -28,17 +28,17 @@ const all_columns = [
     compact: true,
   },
   {
-    name: "Gender",
+    name: "G",
     selector: (row) => row.gender,
     sortable: true,
-    width: "70px",
+    width: "30px",
     compact: true,
   },
   {
     name: "Age",
     selector: (row) => row.age,
     sortable: true,
-    width: "60px",
+    width: "40px",
     compact: true,
   },
   {
