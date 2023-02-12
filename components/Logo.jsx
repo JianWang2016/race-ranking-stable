@@ -13,8 +13,8 @@ export function Logomark(props) {
 export function Logo(props) {
   return (
     <>
-      <div className="ml-4  text-2xl font-bold text-cyan-500">
-        Marathon Ranking
+      <div className="m-1 text-xl font-bold text-cyan-500">
+        Marathon
       </div>
     </>
   );

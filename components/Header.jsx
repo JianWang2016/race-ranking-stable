@@ -49,12 +49,12 @@ export function Header() {
   return (
     <header>
       <nav>
-        <Container className="relative z-50 flex justify-between py-8">
-          <div className="relative z-10 flex items-center gap-8">
+        <Container className="relative z-50 flex justify-between py-1">
+          <div className="relative z-10 flex items-center gap-2">
             <Link href="/" aria-label="Home">
               <Logo className="h-7 w-auto" />
             </Link>
-            <div className="flex gap-2 sm:flex sm:gap-3 md:flex md:gap-3 lg:flex lg:gap-5">
+            <div className="flex gap-3 sm:flex sm:gap-3 md:flex md:gap-3 lg:flex lg:gap-5">
               <NavLinks />
             </div>
           </div>
