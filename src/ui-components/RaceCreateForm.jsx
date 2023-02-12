@@ -67,7 +67,14 @@ export default function RaceCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    finishTime: [],
+    finishTime: [
+      { type: "Required" },
+      {
+        type: "LessThanChar",
+        numValues: [8],
+        validationMessage: "The value must be 8 characters or fewer",
+      },
+    ],
     raceDate: [{ type: "Required" }],
     raceName: [
       { type: "Required" },
@@ -88,8 +95,8 @@ export default function RaceCreateForm(props) {
     middleName: [
       {
         type: "LessThanChar",
-        numValues: [50],
-        validationMessage: "The value must be 50 characters or fewer",
+        numValues: [5],
+        validationMessage: "The value must be 5 characters or fewer",
       },
     ],
     lastName: [
@@ -200,7 +207,7 @@ export default function RaceCreateForm(props) {
       >
         <TextField
           label="Finish time"
-          isRequired={false}
+          isRequired={true}
           isReadOnly={false}
           placeholder="h:mm:ss"
           value={finishTime}
@@ -269,6 +276,7 @@ export default function RaceCreateForm(props) {
         label="Race name"
         isRequired={true}
         isReadOnly={false}
+        placeholder="Official race name"
         value={raceName}
         onChange={(e) => {
           let { value } = e.target;
@@ -311,6 +319,7 @@ export default function RaceCreateForm(props) {
           label="First name"
           isRequired={true}
           isReadOnly={false}
+          placeholder="First name"
           value={firstName}
           onChange={(e) => {
             let { value } = e.target;
@@ -340,9 +349,10 @@ export default function RaceCreateForm(props) {
           {...getOverrideProps(overrides, "firstName")}
         ></TextField>
         <TextField
-          label="Middle name"
+          label="M.I."
           isRequired={false}
           isReadOnly={false}
+          placeholder="M.I"
           value={middleName}
           onChange={(e) => {
             let { value } = e.target;
@@ -375,6 +385,7 @@ export default function RaceCreateForm(props) {
           label="Last name"
           isRequired={true}
           isReadOnly={false}
+          placeholder="Last name"
           value={lastName}
           onChange={(e) => {
             let { value } = e.target;

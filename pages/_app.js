@@ -23,9 +23,7 @@ export default function App({ Component, pageProps }) {
         <title>Marathon Ranking</title>
         <meta name="description" content="Rank 2022 best marathon race time" />
       </Head>
-      <ThemeProvider theme={studioTheme}>
       <Component {...pageProps} />
-      </ThemeProvider>
       <Footer />
     </>
   );

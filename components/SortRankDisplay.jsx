@@ -54,9 +54,7 @@ const SortRankDisplay = ({ gender, ageGroup, data }) => {
   title = title + " Ranking";
 
   return (
-    <div className="container">
       <DisplayData data={raceData} ageColumn={ageColumn} title={title} />
-    </div>
   );
 };
 

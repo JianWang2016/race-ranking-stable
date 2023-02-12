@@ -1,5 +1,5 @@
 import RaceCreateForm from "@/src/ui-components/RaceCreateForm";
-import { Container } from "@/components/Container";
+import { Container } from "react-dom";
 import React, { useState, useEffect } from "react";
 import { EntrySuccess2 } from "@/components/EntrySuccess";
 
@@ -10,10 +10,10 @@ function Entry() {
 
   return (
     <>
-
-      <div className="container">
+      <div className="max-w-screen-sm justify-center overflow-hidden bg-white shadow sm:rounded-lg">
         {showForm ? (
           <RaceCreateForm
+            overrides={{ gender: { labelPosition: "top", direction: "row" } }}
             onSuccess={() => {
               setShowForm(false);
             }}

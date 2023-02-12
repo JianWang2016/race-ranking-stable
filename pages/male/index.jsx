@@ -11,8 +11,8 @@ function Male() {
   return (
     <>
       <main>
-        <div className="mt-4 flex w-full justify-center md:w-auto">
-          <nav className="flex gap-8">
+        <div className="ml-4 mt-4 flex w-full justify-left md:w-auto">
+          <nav className="flex gap-4">
             <MaleAgeLinks />
           </nav>
         </div>
