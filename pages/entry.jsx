@@ -13,7 +13,10 @@ function Entry() {
       <div className="max-w-screen-sm justify-center overflow-hidden bg-white shadow sm:rounded-lg">
         {showForm ? (
           <RaceCreateForm
-            overrides={{ gender: { labelPosition: "top", direction: "row" } }}
+            overrides={{
+              gender: { labelPosition: "top", direction: "row" },
+              raceDate: { min: "2022-01-01", max: "2022-12-31" },
+            }}
             onSuccess={() => {
               setShowForm(false);
             }}
