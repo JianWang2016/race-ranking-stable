@@ -9,8 +9,9 @@ const all_columns = [
     name: "Rank",
     selector: (row) => row.index + 1,
     sortable: false,
-    width: "65px",
+    width: "55px",
     compact: false,
+    wrap: true
   },
   {
     name: "Name",
@@ -24,7 +25,7 @@ const all_columns = [
     name: "Time",
     selector: (row) => row.finishTime,
     sortable: false,
-    width: "80px",
+    width: "60px",
     compact: true,
   },
   {
@@ -45,6 +46,7 @@ const all_columns = [
     name: "Race Name",
     selector: (row) => row.raceName,
     sortable: true,
+    compact: true,
     wrap: true,
   },
 ];
@@ -54,8 +56,9 @@ const age_columns = [
     name: "Rank",
     selector: (row) => row.index + 1,
     sortable: false,
-    width: "65px",
+    width: "55px",
     compact: false,
+    wrap: true
   },
   {
     name: "Name",
@@ -69,7 +72,7 @@ const age_columns = [
     name: "Time",
     selector: (row) => row.finishTime,
     sortable: false,
-    width: "80px",
+    width: "60px",
     compact: true,
   },
   {
@@ -90,13 +93,15 @@ const age_columns = [
     name: "Age Group",
     selector: (row) => row.ageGroup,
     sortable: true,
-    width: "80px",
+    width: "70px",
     compact: true,
+    wrap: true,
   },
   {
     name: "Race Name",
     selector: (row) => row.raceName,
     sortable: true,
+    compact: true,
     wrap: true,
   },
 ];
@@ -147,6 +152,15 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
   </>
 );
 
+
+const paginationComponentOptions = {
+  rowsPerPageText: 'Rows per page',
+  rangeSeparatorText: 'of',
+  selectAllRowsItem: true,
+  selectAllRowsItemText: 'All',
+};
+
+
 function DisplayData({ data, ageColumn, title }) {
   let columns = all_columns;
   if (ageColumn == true) {
@@ -192,6 +206,9 @@ function DisplayData({ data, ageColumn, title }) {
           responsive
           highlightOnHover
           striped
+          paginationPerPage="25"
+          paginationRowsPerPageOptions={["25", "50", "75", "100"]}
+          paginationComponentOptions={paginationComponentOptions}
           noDataComponent="No record in this category"
           columns={columns}
           data={filteredItems}

@@ -1,0 +1,22 @@
+mutation createRace_19 {
+  createRace(input: {
+    raceName: "Tokyo Marathon",
+    raceDate: "2023-03-12",
+    finishTime: "5:10:15",
+    firstName: "忠仁",
+    middleName: "",
+    lastName: "王",
+    gender: M,
+    dateOfBirth: "1930-07-08",
+    email: "zhongren.wang@gmail.com"
+  }) {
+    id
+    raceName
+    firstName
+    middleName
+    lastName
+    gender
+    dateOfBirth
+    email
+  }
+}

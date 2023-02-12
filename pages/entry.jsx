@@ -16,6 +16,7 @@ function Entry() {
             overrides={{
               gender: { labelPosition: "top", direction: "row" },
               raceDate: { min: "2022-01-01", max: "2022-12-31" },
+              dateOfBirth: { max: "2008-01-01" },
             }}
             onSuccess={() => {
               setShowForm(false);
