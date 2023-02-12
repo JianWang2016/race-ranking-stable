@@ -6,8 +6,9 @@ export function NavLinks() {
   let [hoveredIndex, setHoveredIndex] = useState(null);
 
   return [
-    ["Male runners", "/male"],
-    ["Female runners", "/female"],
+    ["Male", "/male"],
+    ["Female", "/female"],
+    ["Join", "/entry"],
   ].map(([label, href], index) => (
     <Link
       key={label}
@@ -40,7 +41,7 @@ export function NavLinkExtra() {
 
   return [
     ["FAQs", "/faqs"],
-    ["Contact", "/contact"],
+    // ["Contact", "/contact"],
   ].map(([label, href], index) => (
     <Link
       key={label}

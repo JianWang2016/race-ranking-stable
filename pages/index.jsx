@@ -32,23 +32,6 @@ function AllRaces() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
-  //   return (
-  //     <>
-  //       <div>
-  //         <h2>List of Races</h2>
-  //       </div>
-  //       {data.map((race) => {
-  //         return (
-  //           <div key={race.id}>
-  //             <h2>
-  //               {race.raceName} {race.firstName} {race.gender} {race.age}
-  //             </h2>
-  //           </div>
-  //         );
-  //       })}
-  //     </>
-  //   );
-
   return (
     <>
       <main>

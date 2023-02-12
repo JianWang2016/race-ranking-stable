@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Head from "next/head";
 import { Popover } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -49,17 +48,13 @@ function MobileNavLink({ children, ...props }) {
 export function Header() {
   return (
     <header>
-      <Head>
-        <title>Marathon Race Ranking</title>
-        <meta name="description" content="Rank 2022 best marathon race time" />
-      </Head>
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-8">
             <Link href="/" aria-label="Home">
               <Logo className="h-7 w-auto" />
             </Link>
-            <div className="hidden sm:flex sm:gap-3 md:flex md:gap-3 lg:flex lg:gap-5">
+            <div className="flex gap-2 sm:flex sm:gap-3 md:flex md:gap-3 lg:flex lg:gap-5">
               <NavLinks />
             </div>
           </div>
@@ -103,15 +98,9 @@ export function Header() {
                           className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
                         >
                           <div className="space-y-4">
-                            <MobileNavLink href="/male">
-                              Male runners
-                            </MobileNavLink>
-                            <MobileNavLink href="/female">
-                              Female runners
-                            </MobileNavLink>
-                          </div>
-                          <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/entry">I'd love to join</Button>
+                            <MobileNavLink href="/male">Male</MobileNavLink>
+                            <MobileNavLink href="/female">Female</MobileNavLink>
+                            <MobileNavLink href="/entry">Join</MobileNavLink>
                           </div>
                         </Popover.Panel>
                       </>
@@ -120,9 +109,6 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <Button href="/entry" variant="outline" className="hidden sm:block">
-              I'd love to join
-            </Button>
           </div>
         </Container>
       </nav>
