@@ -18,11 +18,11 @@ Amplify.configure({ ...awsconfig, ssr: true });
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Header />
       <Head>
         <title>Marathon Ranking</title>
         <meta name="description" content="Rank 2022 best marathon race time" />
       </Head>
+      <Header />
       <Component {...pageProps} />
       <Footer />
     </>

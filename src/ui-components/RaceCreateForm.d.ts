@@ -21,7 +21,6 @@ export declare type RaceCreateFormInputValues = {
     lastName?: string;
     gender?: string;
     dateOfBirth?: string;
-    email?: string;
 };
 export declare type RaceCreateFormValidationValues = {
     finishTime?: ValidationFunction<string>;
@@ -32,23 +31,24 @@ export declare type RaceCreateFormValidationValues = {
     lastName?: ValidationFunction<string>;
     gender?: ValidationFunction<string>;
     dateOfBirth?: ValidationFunction<string>;
-    email?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RaceCreateFormOverridesProps = {
     RaceCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     SectionalElement2?: PrimitiveOverrideProps<DividerProps>;
+    RowGrid2?: PrimitiveOverrideProps<GridProps>;
     finishTime?: PrimitiveOverrideProps<TextFieldProps>;
     raceDate?: PrimitiveOverrideProps<TextFieldProps>;
     raceName?: PrimitiveOverrideProps<TextFieldProps>;
     SectionalElement1?: PrimitiveOverrideProps<DividerProps>;
+    RowGrid5?: PrimitiveOverrideProps<GridProps>;
     firstName?: PrimitiveOverrideProps<TextFieldProps>;
     middleName?: PrimitiveOverrideProps<TextFieldProps>;
     lastName?: PrimitiveOverrideProps<TextFieldProps>;
+    RowGrid6?: PrimitiveOverrideProps<GridProps>;
     gender?: PrimitiveOverrideProps<RadioGroupFieldProps>;
     dateOfBirth?: PrimitiveOverrideProps<TextFieldProps>;
-    email?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type RaceCreateFormProps = React.PropsWithChildren<{
     overrides?: RaceCreateFormOverridesProps | undefined | null;

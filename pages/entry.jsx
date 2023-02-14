@@ -17,6 +17,9 @@ function Entry() {
               gender: { labelPosition: "top", direction: "row" },
               raceDate: { min: "2022-01-01", max: "2022-12-31" },
               dateOfBirth: { max: "2008-01-01" },
+              'RowGrid2': { templateColumns: '100px auto' },
+              'RowGrid5': { templateColumns: 'auto 60px auto' },
+              'RowGrid6': { templateColumns: '200px auto' },
             }}
             onSuccess={() => {
               setShowForm(false);
